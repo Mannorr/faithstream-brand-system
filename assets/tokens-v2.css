@@ -1,0 +1,289 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   FAITHSTREAM / HOUSE OF FAITH — DESIGN TOKENS  v2
+   Purple stays the brand. Ember carries emphasis. Categories get real hues.
+   Type: Geist Sans + Geist Mono, self-hosted.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── TYPEFACE ─────────────────────────────────────────────────────────── */
+@font-face{font-family:'Geist';font-style:normal;font-weight:400;font-display:swap;
+  src:url('font/geist-sans-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:500;font-display:swap;
+  src:url('font/geist-sans-latin-500-normal.woff2') format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:600;font-display:swap;
+  src:url('font/geist-sans-latin-600-normal.woff2') format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:700;font-display:swap;
+  src:url('font/geist-sans-latin-700-normal.woff2') format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:400;font-display:swap;
+  src:url('font/geist-mono-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:500;font-display:swap;
+  src:url('font/geist-mono-latin-500-normal.woff2') format('woff2');}
+
+:root{
+  /* ── GROUNDS ─────────────────────────────────────────── */
+  --void:        #07070B;   /* page base, deeper than before */
+  --bg:          #0A0A0F;   /* = --bg in product code */
+  --surface:     #111118;   /* panels, nav drawer */
+  --surface-2:   #16161F;   /* cards */
+  --surface-3:   #1D1D28;   /* raised / hover */
+
+  /* ── PURPLE: the brand, unchanged from shipped product ─ */
+  --plum:        #491440;
+  --plum-tint:   #6E3D63;
+  --magenta:     #9B2F87;
+  --magenta-2:   #702263;
+  --magenta-dim: rgba(155,47,135,.45);
+  --lavender:    #6C59A6;
+  --lavender-lt: #9C8FC4;
+  --lavender-pl: #DCD6EC;
+
+  /* ── EMBER: the new accent. Emphasis only, never chrome ─ */
+  --ember:       #FF7846;
+  --ember-deep:  #C8481D;
+  --ember-dim:   rgba(255,120,70,.14);
+  --signal:      #FFD972;   /* highlight, used sparingly */
+
+  /* ── CATEGORY: five genres, five distinguishable hues ─── */
+  --cat-faith:   #9B2F87;   /* brand magenta anchors the set */
+  --cat-drama:   #FF7846;
+  --cat-doc:     #38BDF8;
+  --cat-family:  #FFD972;
+  --cat-worship: #A78BFA;
+
+  /* ── NEUTRALS ────────────────────────────────────────── */
+  --cream:       #F0EEF8;
+  --ink-80:      rgba(240,238,248,.80);
+  --ink-55:      rgba(240,238,248,.55);
+  --ink-38:      rgba(240,238,248,.38);
+  --ink-20:      rgba(240,238,248,.20);
+  --hair:        rgba(240,238,248,.10);
+  --hair-soft:   rgba(240,238,248,.06);
+  --light-bg:    #F5F4F8;
+  --light-ink:   #15101C;
+
+  /* ── FUNCTIONAL ──────────────────────────────────────── */
+  --ok:          #4ADE80;
+  --warn:        #FFD972;
+  --err:         #E5484D;
+
+  /* ── TYPE ────────────────────────────────────────────── */
+  --sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono: 'Geist Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+
+  /* ── GRID & RHYTHM ───────────────────────────────────── */
+  --gutter: clamp(20px, 4.5vw, 72px);
+  --maxw: 1560px;
+  --rule: 1px;
+}
+
+/* ── RESET ────────────────────────────────────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  font-family:var(--sans);
+  background:var(--void);
+  color:var(--cream);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-feature-settings:'ss01','cv01';
+}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+table{border-collapse:collapse;width:100%;}
+::selection{background:var(--ember);color:var(--void);}
+
+/* ═══ TYPE SCALE ══════════════════════════════════════════════════════ */
+.display{
+  font-size:clamp(44px,8.2vw,124px);
+  line-height:.92;
+  letter-spacing:-.042em;
+  font-weight:600;
+}
+.h1{font-size:clamp(34px,4.6vw,66px);line-height:1.0;letter-spacing:-.034em;font-weight:600;}
+.h2{font-size:clamp(26px,2.8vw,40px);line-height:1.08;letter-spacing:-.028em;font-weight:600;}
+.h3{font-size:clamp(19px,1.5vw,25px);line-height:1.2;letter-spacing:-.018em;font-weight:600;}
+.h4{font-size:17px;line-height:1.3;letter-spacing:-.01em;font-weight:600;}
+.lede{font-size:clamp(17px,1.5vw,22px);line-height:1.55;color:var(--ink-80);font-weight:400;}
+.body{font-size:16px;line-height:1.68;color:var(--ink-80);}
+.small{font-size:14px;line-height:1.6;color:var(--ink-55);}
+
+/* mono micro-labels — the annotation layer */
+.label{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-38);
+}
+.label-em{color:var(--ember);}
+.spec{font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--ink-55);}
+.spec-lg{font-family:var(--mono);font-size:13px;letter-spacing:.01em;color:var(--ink-80);}
+
+/* ═══ SHELL ═══════════════════════════════════════════════════════════ */
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter);}
+.bleed{width:100%;}
+
+/* ── top bar ─────────────────────────────────────────── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(7,7,11,.82);
+  backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:var(--rule) solid var(--hair);
+}
+.topbar-in{
+  max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);
+  height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.topbar-logo{display:flex;align-items:center;gap:12px;}
+.topbar-logo img{height:22px;width:auto;}
+.topbar-logo span{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-38);}
+.nav{display:flex;gap:4px;align-items:center;}
+.nav a{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-55);padding:7px 11px;border-radius:5px;transition:.16s;
+  white-space:nowrap;
+}
+.nav a:hover{color:var(--cream);background:var(--surface-2);}
+.nav a[aria-current]{color:var(--void);background:var(--ember);}
+@media(max-width:1080px){
+  .topbar-in{height:auto;padding-block:12px;flex-wrap:wrap;gap:10px 18px;}
+  .nav{width:100%;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;}
+  .nav::-webkit-scrollbar{display:none;}
+  .nav a{padding:6px 9px;}
+}
+
+/* ── section scaffolding ─────────────────────────────── */
+.sec{padding-block:clamp(72px,9vw,150px);border-top:var(--rule) solid var(--hair);}
+.sec:first-of-type{border-top:0;}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-bottom:clamp(40px,5vw,80px);}
+@media(min-width:900px){
+  .sec-head{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,5vw,96px);align-items:end;}
+}
+.sec-num{
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;
+}
+.sec-num i{
+  width:9px;height:9px;border-radius:50%;background:var(--ember);flex:none;font-style:normal;
+}
+.block{margin-bottom:clamp(44px,5vw,88px);}
+.block:last-child{margin-bottom:0;}
+.block-head{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 18px;
+  padding-bottom:14px;margin-bottom:28px;border-bottom:var(--rule) solid var(--hair);
+}
+.block-head .h3{flex:1 1 auto;}
+.note{max-width:76ch;margin-top:14px;}
+
+/* ── grids ───────────────────────────────────────────── */
+.g{display:grid;gap:var(--g,20px);}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));}
+.g5{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));}
+
+/* fixed-track grids — use when the item count must not reflow into orphans */
+.gf3,.gf4,.gf5{grid-template-columns:repeat(2,minmax(0,1fr));}
+@media(max-width:520px){.gf3,.gf4,.gf5{grid-template-columns:minmax(0,1fr);}}
+@media(min-width:760px){
+  .gf3{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .gf4{grid-template-columns:repeat(4,minmax(0,1fr));}
+  .gf5{grid-template-columns:repeat(3,minmax(0,1fr));}
+}
+@media(min-width:1000px){.gf5{grid-template-columns:repeat(5,minmax(0,1fr));}}
+
+/* horizontally scrollable table shell */
+.tbl-wrap{overflow-x:auto;scrollbar-width:thin;}
+.tbl-wrap .tbl{min-width:620px;}
+
+/* ── tiles ───────────────────────────────────────────── */
+.tile{
+  border:var(--rule) solid var(--hair);border-radius:10px;overflow:hidden;
+  background:var(--surface);display:flex;flex-direction:column;
+}
+.tile-art{
+  aspect-ratio:16/10;display:grid;place-items:center;padding:26px;position:relative;
+  flex:1 1 auto;
+}
+.tile-foot{margin-top:auto;}
+.tile-art img{max-height:60%;width:auto;object-fit:contain;}
+.tile-foot{
+  padding:12px 14px;border-top:var(--rule) solid var(--hair-soft);
+  display:flex;flex-direction:column;gap:4px;background:var(--void);
+}
+
+/* ── colour fields: the EVO-style full-bleed spec blocks ─ */
+.field{
+  position:relative;min-height:clamp(170px,19vw,290px);
+  border-radius:12px;overflow:hidden;padding:20px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.field .fname{font-size:17px;font-weight:600;letter-spacing:-.01em;}
+.field .fspec{font-family:var(--mono);font-size:11.5px;line-height:1.75;margin-top:8px;opacity:.78;}
+.field .ftok{
+  position:absolute;top:18px;left:20px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.6;
+}
+.on-dark{color:var(--cream);}
+.on-light{color:var(--light-ink);}
+
+/* ── ramp: a continuous tint strip ───────────────────── */
+.ramp{display:flex;border-radius:10px;overflow:hidden;min-height:76px;}
+.ramp div{flex:1;position:relative;}
+.ramp span{
+  position:absolute;bottom:7px;left:8px;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.04em;opacity:.8;
+}
+
+/* ── spec table ──────────────────────────────────────── */
+.tbl{font-size:14px;}
+.tbl th{
+  font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-38);text-align:left;
+  padding:0 16px 12px 0;border-bottom:var(--rule) solid var(--hair);
+}
+.tbl td{padding:15px 16px 15px 0;border-bottom:var(--rule) solid var(--hair-soft);
+  vertical-align:top;color:var(--ink-80);}
+.tbl td:first-child{color:var(--cream);font-family:var(--mono);font-size:12.5px;white-space:nowrap;}
+.sw{width:30px;height:30px;border-radius:5px;border:var(--rule) solid var(--hair);}
+
+/* ── callout ─────────────────────────────────────────── */
+.call{
+  border:var(--rule) solid var(--hair);border-left:2px solid var(--ember);
+  border-radius:0 10px 10px 0;padding:22px 26px;background:var(--ember-dim);
+}
+.call.warn{border-left-color:var(--signal);background:rgba(255,217,114,.09);}
+.call.purple{border-left-color:var(--magenta);background:rgba(155,47,135,.12);}
+.call .label{margin-bottom:9px;}
+
+/* ── pills / chips ───────────────────────────────────── */
+.chips{display:flex;flex-wrap:wrap;gap:9px;}
+.chip{
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  padding:7px 13px;border-radius:999px;border:var(--rule) solid var(--hair);color:var(--ink-80);
+}
+.chip i{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:7px;font-style:normal;}
+
+/* ── don't-do gallery ────────────────────────────────── */
+.dont{
+  border:var(--rule) solid var(--hair);border-radius:9px;overflow:hidden;background:var(--surface);
+}
+.dont-art{aspect-ratio:1/1;display:grid;place-items:center;padding:22px;background:var(--bg);
+  overflow:hidden;position:relative;}
+.dont-art img{max-width:68%;height:auto;}
+.dont-cap{padding:11px 13px;font-size:12.5px;line-height:1.45;color:var(--ink-55);
+  border-top:var(--rule) solid var(--hair-soft);display:flex;gap:7px;}
+.dont-cap::before{content:'×';color:var(--err);font-weight:700;flex:none;}
+
+/* ── footer ──────────────────────────────────────────── */
+.foot{border-top:var(--rule) solid var(--hair);padding-block:52px;}
+.foot-in{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;}
+
+/* ── utilities ───────────────────────────────────────── */
+.stack{display:flex;flex-direction:column;}
+.row{display:flex;flex-wrap:wrap;}
+.mono{font-family:var(--mono);}
+.em{color:var(--ember);}
+.mg{color:var(--magenta);}
+.muted{color:var(--ink-55);}
+.center{text-align:center;}
+.hair{height:1px;background:var(--hair);border:0;}

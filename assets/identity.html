@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo, Colour &amp; Type — FaithStream Brand System</title>
+<meta name="theme-color" content="#07070B">
+<link rel="icon" href="assets/logo/faithstream_favicon.png">
+<link rel="stylesheet" href="assets/tokens-v2.css">
+<style>
+/* ── page-local: hero ─────────────────────────────────── */
+.hero{padding-block:clamp(60px,9vw,130px) clamp(44px,5vw,78px);}
+.hero-grid{display:grid;gap:clamp(30px,4vw,64px);}
+@media(min-width:960px){.hero-grid{grid-template-columns:minmax(0,8fr) minmax(0,4fr);align-items:end;}}
+.hero .display{max-width:16ch;}
+.hero-meta{display:grid;gap:14px;}
+.hero-meta div{display:flex;justify-content:space-between;gap:16px;
+  padding-bottom:11px;border-bottom:1px solid var(--hair);}
+
+/* ── section index ────────────────────────────────────── */
+.index{display:grid;gap:0;border-top:1px solid var(--hair);}
+.index a{
+  display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:18px;
+  padding:19px 4px;border-bottom:1px solid var(--hair);transition:.18s;
+}
+.index a:hover{background:var(--surface);padding-left:16px;}
+.index .n{
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--mono);font-size:11px;font-weight:500;color:var(--void);
+}
+.index .t{font-size:clamp(21px,2.4vw,31px);font-weight:600;letter-spacing:-.026em;}
+.index .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-38);}
+@media(max-width:620px){.index .k{display:none;}}
+
+/* ── size scale ───────────────────────────────────────── */
+.scale-row{
+  display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;align-items:center;
+  padding:22px 0;border-bottom:1px solid var(--hair-soft);
+}
+@media(min-width:760px){.scale-row{grid-template-columns:150px 230px minmax(0,1fr);}}
+.scale-art{display:flex;align-items:center;min-height:46px;}
+
+/* ── clear space ──────────────────────────────────────── */
+.clear-demo{
+  position:relative;background:var(--surface);border:1px solid var(--hair);
+  border-radius:10px;padding:clamp(40px,7vw,80px);display:grid;place-items:center;
+}
+.clear-inner{position:relative;outline:1px dashed var(--ember);outline-offset:clamp(22px,4vw,46px);}
+.clear-inner img{height:clamp(44px,6vw,74px);width:auto;}
+
+/* ── type specimen ────────────────────────────────────── */
+.specimen{display:grid;gap:1px;background:var(--hair);border:1px solid var(--hair);
+  border-radius:12px;overflow:hidden;}
+@media(min-width:760px){.specimen{grid-template-columns:repeat(4,1fr);}}
+.spec-cell{background:var(--bg);padding:24px 20px 20px;display:flex;flex-direction:column;
+  justify-content:space-between;min-height:220px;}
+.spec-cell .glyph{font-size:clamp(76px,9vw,126px);line-height:.8;letter-spacing:-.05em;margin-top:18px;}
+.hier{display:grid;gap:0;}
+.hier-row{display:grid;gap:10px 28px;padding:26px 0;border-bottom:1px solid var(--hair-soft);}
+@media(min-width:860px){.hier-row{grid-template-columns:200px minmax(0,1fr);align-items:baseline;}}
+
+/* ── context mockups ──────────────────────────────────── */
+.mock{border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:var(--surface);}
+.mock-body{padding:clamp(24px,3vw,44px);}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="topbar-logo" href="index.html">
+      <img src="assets/logo/faithstream_full_white.png" alt="FaithStream">
+      <span>Brand System</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">01 Overview</a>
+      <a href="identity.html" aria-current="page">02 Identity</a>
+      <a href="foundations.html">03 Foundations</a>
+      <a href="components.html">04 Components</a>
+      <a href="patterns.html">05 Motifs</a>
+      <a href="web-ui.html">06 Web&nbsp;&amp;&nbsp;UI</a>
+      <a href="governance.html">07 Governance</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════ HERO ── -->
+<section class="wrap hero">
+  <div class="hero-grid">
+    <div>
+      <div class="sec-num"><i></i><span class="label label-em">02 — Visual Identity</span></div>
+      <h1 class="display">Logo,<br>Colour<br>&amp; Type</h1>
+    </div>
+    <div class="stack" style="gap:28px">
+      <p class="lede">The foundation layer every other surface is built from. Ten logo
+        files covering every context already visible in the product — plus the dark and
+        light cases the original one-page guide never covered.</p>
+      <div class="hero-meta">
+        <div><span class="label">Assets</span><span class="spec">/assets/logo/ · 10 files</span></div>
+        <div><span class="label">Typeface</span><span class="spec">Geist Sans · Geist Mono</span></div>
+        <div><span class="label">Revision</span><span class="spec">v2 · 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ INDEX ── -->
+<section class="wrap" style="padding-bottom:clamp(60px,7vw,110px)">
+  <div class="index">
+    <a href="#logo">
+      <span class="n" style="background:var(--cat-faith)">01</span>
+      <span class="t">Logo System</span>
+      <span class="k">Lockups · Backgrounds · Misuse</span>
+    </a>
+    <a href="#colour">
+      <span class="n" style="background:var(--cat-drama)">02</span>
+      <span class="t">Colour System</span>
+      <span class="k">Purple · Ember · Categories</span>
+    </a>
+    <a href="#type">
+      <span class="n" style="background:var(--cat-doc)">03</span>
+      <span class="t">Typography System</span>
+      <span class="k">Geist · Hierarchy · Scale</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ 01 — LOGO ───── -->
+<section class="sec" id="logo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num"><i style="background:var(--cat-faith)"></i><span class="label">Section 01</span></div>
+        <h2 class="h1">Logo System</h2>
+      </div>
+      <p class="body">Ten files, one naming pattern: <span class="mono em">faithstream_&lt;variant&gt;_&lt;colour&gt;.png</span>.
+        Three variants — full lockup, icon only, wordmark only — across three colours, plus a
+        square favicon and the centred stacked lockup.</p>
+    </div>
+
+    <!-- 1.1 three contexts -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Full lockup — three contexts</h3>
+        <span class="label">1.1</span>
+      </div>
+      <div class="g gf3" style="--g:18px">
+        <div class="tile"><div class="tile-art" style="background:var(--bg)">
+          <img src="assets/logo/faithstream_full_purple.png" alt=""></div>
+          <div class="tile-foot"><span class="h4">Dark background</span>
+          <span class="spec">faithstream_full_purple.png</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:var(--surface-2)">
+          <img src="assets/logo/faithstream_full_white.png" alt=""></div>
+          <div class="tile-foot"><span class="h4">Surface background</span>
+          <span class="spec">faithstream_full_white.png</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:var(--light-bg)">
+          <img src="assets/logo/faithstream_full_black.png" alt=""></div>
+          <div class="tile-foot"><span class="h4">Light background</span>
+          <span class="spec">faithstream_full_black.png</span></div></div>
+      </div>
+      <p class="body note">The three contexts the logo already appears in across the live
+        product — top nav, nav drawer, browse panel. Purple reads on both dark and surface;
+        switch to white only when the purple's contrast against a busy photo or video
+        background drops, and to black only on light-mode panels.</p>
+    </div>
+
+    <!-- 1.2 every background -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Logo on every brand background</h3>
+        <span class="label">1.2 · eight canonical grounds</span>
+      </div>
+      <div class="g gf4" style="--g:14px">
+        <div class="tile"><div class="tile-art" style="background:#0A0A0F;aspect-ratio:4/3">
+          <img src="assets/logo/faithstream_full_purple.png" alt=""></div>
+          <div class="tile-foot"><span class="label">Black · #0A0A0F</span>
+          <span class="spec" style="font-size:11px">full_purple</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:#18181F;aspect-ratio:4/3">
+          <img src="assets/logo/faithstream_full_purple.png" alt=""></div>
+          <div class="tile-foot"><span class="label">Deep Surface · #18181F</span>
+          <span class="spec" style="font-size:11px">full_purple</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:#491440;aspect-ratio:4/3">
+          <img src="assets/logo/faithstream_full_white.png" alt=""></div>
+          <div class="tile-foot"><span class="label">Plum · #491440</span>
+          <span class="spec" style="font-size:11px">full_white</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:#9B2F87;aspect-ratio:4/3">
+          <img src="assets/logo/faithstream_full_white.png" alt=""></div>
+          <div class="tile-foot"><span class="label">Magenta · #9B2F87</span>
+          <span class="spec" style="font-size:11px">full_white</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:#6C59A6;aspect-ratio:4/3">
+          <img src="assets/logo/faithstream_full_white.png" alt=""></div>
+          <div class="tile-foot"><span class="label">Lavender · #6C59A6</span>
+          <span class="spec" style="font-size:11px">full_white</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:#DCD6EC;aspect-ratio:4/3">
+          <img src="assets/logo/faithstream_full_purple.png" alt=""></div>
+          <div class="tile-foot"><span class="label">Lavender Pale · #DCD6EC</span>
+          <span class="spec" style="font-size:11px">full_purple</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:#F0EEF8;aspect-ratio:4/3">
+          <img src="assets/logo/faithstream_full_black.png" alt=""></div>
+          <div class="tile-foot"><span class="label">Cream · #F0EEF8</span>
+          <span class="spec" style="font-size:11px">full_black</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:#FFFFFF;aspect-ratio:4/3">
+          <img src="assets/logo/faithstream_full_black.png" alt=""></div>
+          <div class="tile-foot"><span class="label">White · #FFFFFF</span>
+          <span class="spec" style="font-size:11px">full_black</span></div></div>
+      </div>
+      <p class="body note">Every canonical background the logo may appear on, each labelled
+        with the correct file. This removes the guesswork for thumbnail artists, social
+        designers and partner teams.</p>
+    </div>
+
+    <!-- 1.3 stacked -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Centred / stacked lockup</h3>
+        <span class="label label-em">1.3 · new to the system</span>
+      </div>
+      <div class="g gf3" style="--g:18px">
+        <div class="tile"><div class="tile-art" style="background:var(--bg)">
+          <div style="width:40%;aspect-ratio:1/1.12;background:var(--magenta);
+            -webkit-mask:url(assets/logo/faithstream_stacked_white.png) center/contain no-repeat;
+            mask:url(assets/logo/faithstream_stacked_white.png) center/contain no-repeat"></div></div>
+          <div class="tile-foot"><span class="h4">Dark · magenta fill</span><span class="spec">#9B2F87</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:var(--surface-2)">
+          <div style="width:40%;aspect-ratio:1/1.12;background:#fff;
+            -webkit-mask:url(assets/logo/faithstream_stacked_white.png) center/contain no-repeat;
+            mask:url(assets/logo/faithstream_stacked_white.png) center/contain no-repeat"></div></div>
+          <div class="tile-foot"><span class="h4">Surface · white fill</span><span class="spec">#FFFFFF</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:var(--light-bg)">
+          <div style="width:40%;aspect-ratio:1/1.12;background:#0A0A0F;
+            -webkit-mask:url(assets/logo/faithstream_stacked_white.png) center/contain no-repeat;
+            mask:url(assets/logo/faithstream_stacked_white.png) center/contain no-repeat"></div></div>
+          <div class="tile-foot"><span class="h4">Light · black fill</span><span class="spec">#0A0A0F</span></div></div>
+      </div>
+      <p class="body note">A centre-aligned vertical lockup — flame mark above a stacked
+        wordmark — for formats where the horizontal lockup fights the canvas: posters, story
+        covers, splash screens, square social tiles, event screens, merchandise. In wide
+        horizontal spaces the horizontal lockup remains the default; the stacked version is
+        never a substitute there.</p>
+      <div class="call" style="margin-top:28px">
+        <div class="label label-em">One master file, many fills</div>
+        <p class="body">Only one file exists: <span class="mono">faithstream_stacked_white.png</span>
+          (white, transparent). Every colour version here is generated live by using that PNG
+          as a CSS mask filled with a brand token — so the colour always comes from the palette,
+          never from a re-export that could drift. Approved fills:
+          <span class="mono">#FFFFFF</span> · <span class="mono">#0A0A0F</span> ·
+          <span class="mono">#9B2F87</span> · <span class="mono">#491440</span>. Nothing else.</p>
+      </div>
+    </div>
+
+    <!-- 1.4 size scale -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Size scale</h3>
+        <span class="label">1.4 · rendered at actual size</span>
+      </div>
+      <div>
+        <div class="scale-row"><span class="label">Banner / OG</span>
+          <span class="spec-lg">200px wide</span>
+          <div class="scale-art"><img src="assets/logo/faithstream_full_purple.png" style="width:200px" alt=""></div></div>
+        <div class="scale-row"><span class="label">Marketing</span>
+          <span class="spec-lg">120px wide</span>
+          <div class="scale-art"><img src="assets/logo/faithstream_full_purple.png" style="width:120px" alt=""></div></div>
+        <div class="scale-row"><span class="label">Hero nav</span>
+          <span class="spec-lg">80px wide</span>
+          <div class="scale-art"><img src="assets/logo/faithstream_full_purple.png" style="width:80px" alt=""></div></div>
+        <div class="scale-row" style="border-bottom-color:var(--ember)">
+          <span class="label label-em">Standard nav</span>
+          <span class="spec-lg">48px wide — minimum for full lockup</span>
+          <div class="scale-art"><img src="assets/logo/faithstream_full_purple.png" style="width:48px" alt=""></div></div>
+        <div class="scale-row"><span class="label">Compact</span>
+          <span class="spec-lg">28px — switch to icon only</span>
+          <div class="scale-art"><img src="assets/logo/faithstream_icon_purple.png" style="width:28px" alt=""></div></div>
+        <div class="scale-row"><span class="label">Favicon</span>
+          <span class="spec-lg">16px — use the pre-optimised file</span>
+          <div class="scale-art"><img src="assets/logo/faithstream_favicon.png" style="width:16px" alt=""></div></div>
+      </div>
+      <div class="call warn" style="margin-top:28px">
+        <div class="label">Minimum size rule</div>
+        <p class="body">The full lockup must never appear narrower than <strong>48px</strong>.
+          Below that the wordmark stops being readable even at retina resolution. Always switch
+          to <span class="mono">faithstream_icon_purple.png</span> at compact sizes, and to
+          <span class="mono">faithstream_favicon.png</span> at 16px — never scale the full
+          lockup down to it.</p>
+      </div>
+    </div>
+
+    <!-- 1.5 co-brand -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Co-brand lockup</h3>
+        <span class="label">1.5</span>
+      </div>
+      <div class="g" style="--g:22px;grid-template-columns:minmax(0,1fr)">
+        <div class="tile"><div class="tile-art" style="background:var(--bg);aspect-ratio:auto;padding:46px">
+          <div class="row" style="align-items:center;gap:24px">
+            <img src="assets/logo/faithstream_wordmark_white.png" style="height:26px;width:auto" alt="">
+            <span style="width:1px;height:34px;background:var(--ink-20)"></span>
+            <span class="label" style="border:1px dashed var(--ink-20);padding:12px 22px;border-radius:5px">Partner Logo</span>
+          </div></div></div>
+      </div>
+      <ol class="body note" style="padding-left:1.1em;display:grid;gap:7px">
+        <li>Always use the wordmark-only file — not the full lockup with icon — in partner contexts.</li>
+        <li>The separator height should match the cap-height of the taller of the two logos.</li>
+        <li>On dark use <span class="mono">wordmark_white</span>; on light use <span class="mono">wordmark_purple</span>.</li>
+        <li>FaithStream may sit on either side of the separator — left or right is equally valid.</li>
+        <li>Never place partner branding above the FaithStream mark in a vertical stack.</li>
+      </ol>
+      <p class="small" style="margin-top:14px">Minimum clear space between the separator and each logo: 24px.</p>
+    </div>
+
+    <!-- 1.6 icon + wordmark -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Icon and wordmark</h3>
+        <span class="label">1.6</span>
+      </div>
+      <div class="g gf3" style="--g:14px">
+        <div class="tile"><div class="tile-art" style="background:var(--bg);aspect-ratio:3/2">
+          <img src="assets/logo/faithstream_icon_purple.png" style="max-height:52%" alt=""></div>
+          <div class="tile-foot"><span class="label">Icon · purple on dark</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:var(--bg);aspect-ratio:3/2">
+          <img src="assets/logo/faithstream_icon_white.png" style="max-height:52%" alt=""></div>
+          <div class="tile-foot"><span class="label">Icon · white on dark</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:var(--light-bg);aspect-ratio:3/2">
+          <img src="assets/logo/faithstream_icon_black.png" style="max-height:52%" alt=""></div>
+          <div class="tile-foot"><span class="label">Icon · black on light</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:var(--bg);aspect-ratio:3/2">
+          <img src="assets/logo/faithstream_wordmark_white.png" style="max-height:34%" alt=""></div>
+          <div class="tile-foot"><span class="label">Wordmark · white on dark</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:#491440;aspect-ratio:3/2">
+          <img src="assets/logo/faithstream_wordmark_white.png" style="max-height:34%" alt=""></div>
+          <div class="tile-foot"><span class="label">Wordmark · white on plum</span></div></div>
+        <div class="tile"><div class="tile-art" style="background:#F0EEF8;aspect-ratio:3/2">
+          <img src="assets/logo/faithstream_wordmark_purple.png" style="max-height:34%" alt=""></div>
+          <div class="tile-foot"><span class="label">Wordmark · purple on cream</span></div></div>
+      </div>
+      <div class="g g2" style="--g:18px;margin-top:28px">
+        <div class="call warn">
+          <div class="label">Asset inconsistency — flagged</div>
+          <p class="body"><span class="mono">icon_purple</span> includes the full circular badge,
+            but <span class="mono">icon_white</span> and <span class="mono">icon_black</span> are
+            the bare flame mark with no circle — visible above, where they look smaller and float.
+            This reads as an export inconsistency, not a design choice. Re-export white and black
+            with the same badge treatment so all three are interchangeable.</p>
+        </div>
+        <div class="call purple">
+          <div class="label">Note on the wordmark typeface</div>
+          <p class="body">The wordmark is set in a serif display face — "Miller Text" in House of
+            Faith's original guide. The type rules below govern everything <em>around</em> the logo:
+            UI, headlines, body copy. The logo is a fixed asset, not something redrawn in the type
+            system, so changing the system typeface does not require a new logo file.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1.7 clear space -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Clear space</h3>
+        <span class="label">1.7 · minimum 0.5x on all sides</span>
+      </div>
+      <div class="clear-demo">
+        <div class="clear-inner"><img src="assets/logo/faithstream_full_purple.png" alt=""></div>
+      </div>
+      <p class="body note">Defined as a unit relative to the icon's own height — <span class="mono em">x</span> —
+        so it scales correctly whether the logo appears at app-icon size or on a banner.</p>
+    </div>
+
+    <!-- 1.8 misuse -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Things to avoid</h3>
+        <span class="label">1.8 · documented misuse gallery</span>
+      </div>
+      <p class="body" style="max-width:76ch;margin-bottom:26px">A documented gallery — not rules in
+        prose — removes guesswork for anyone touching a thumbnail, banner or partner co-brand. Each
+        example uses the real icon file with the violation applied.</p>
+      <div class="g gf4" style="--g:12px">
+        <div class="dont"><div class="dont-art"><img src="assets/logo/faithstream_icon_purple.png" style="transform:scaleX(-1)" alt=""></div><div class="dont-cap">Flip or mirror the mark</div></div>
+        <div class="dont"><div class="dont-art"><img src="assets/logo/faithstream_icon_purple.png" style="transform:rotate(18deg)" alt=""></div><div class="dont-cap">Tilt or rotate</div></div>
+        <div class="dont"><div class="dont-art"><img src="assets/logo/faithstream_icon_purple.png" style="filter:hue-rotate(118deg) saturate(2.2) brightness(1.15)" alt=""></div><div class="dont-cap">Recolour outside the palette</div></div>
+        <div class="dont"><div class="dont-art"><img src="assets/logo/faithstream_icon_purple.png" style="transform:scaleX(1.65)" alt=""></div><div class="dont-cap">Stretch or distort</div></div>
+        <div class="dont"><div class="dont-art" style="background:#4B2142"><img src="assets/logo/faithstream_icon_purple.png" alt=""></div><div class="dont-cap">Place on low contrast</div></div>
+        <div class="dont"><div class="dont-art"><img src="assets/logo/faithstream_icon_purple.png" style="filter:drop-shadow(5px 7px 5px rgba(0,0,0,.9))" alt=""></div><div class="dont-cap">Add shadows or bevels</div></div>
+        <div class="dont"><div class="dont-art" style="background-image:url(assets/logo/faithstream_icon_purple.png);background-size:33%;background-repeat:repeat"></div><div class="dont-cap">Repeat to build a pattern</div></div>
+        <div class="dont"><div class="dont-art"><div style="text-align:center"><img src="assets/logo/faithstream_icon_purple.png" style="max-width:54%;margin:0 auto" alt=""><div class="mono" style="font-size:12px;margin-top:5px">EVENT 2026</div></div></div><div class="dont-cap">Attach extra text to the mark</div></div>
+        <div class="dont"><div class="dont-art"><img src="assets/logo/faithstream_icon_purple.png" style="image-rendering:pixelated;width:22px" alt=""></div><div class="dont-cap">Use low-res artwork</div></div>
+        <div class="dont"><div class="dont-art"><img src="assets/logo/faithstream_icon_purple.png" style="filter:blur(3.5px)" alt=""></div><div class="dont-cap">Use blurry renders</div></div>
+        <div class="dont"><div class="dont-art" style="overflow:hidden"><div class="mono" style="position:absolute;font-size:13px;opacity:.5;line-height:1.5;word-break:break-all;padding:8px">FAITHSTREAM FAITHSTREAM FAITHSTREAM FAITHSTREAM FAITHSTREAM</div><img src="assets/logo/faithstream_icon_purple.png" style="position:relative" alt=""></div><div class="dont-cap">Place on busy text or pattern</div></div>
+        <div class="dont"><div class="dont-art"><img src="assets/logo/faithstream_icon_purple.png" style="opacity:.3" alt=""></div><div class="dont-cap">Render at reduced opacity</div></div>
+        <div class="dont"><div class="dont-art"><img src="assets/logo/faithstream_icon_purple.png" style="transform:scaleY(.6)" alt=""></div><div class="dont-cap">Squish vertically</div></div>
+        <div class="dont"><div class="dont-art"><img src="assets/logo/faithstream_icon_purple.png" style="transform:rotate(4deg)" alt=""></div><div class="dont-cap">Use slight rotations</div></div>
+        <div class="dont"><div class="dont-art"><img src="assets/logo/faithstream_icon_purple.png" style="filter:drop-shadow(0 0 11px #FF7846) drop-shadow(0 0 22px #FF7846)" alt=""></div><div class="dont-cap">Add glow or neon</div></div>
+        <div class="dont"><div class="dont-art" style="background:var(--bg)"><img src="assets/logo/faithstream_icon_black.png" alt=""></div><div class="dont-cap">Black logo on dark</div></div>
+      </div>
+      <p class="label" style="margin:30px 0 14px">Stacked-lockup-specific violations</p>
+      <div class="g gf4" style="--g:12px">
+        <div class="dont"><div class="dont-art"><div style="width:100%;height:30px;background:var(--magenta);
+          -webkit-mask:url(assets/logo/faithstream_stacked_white.png) center/contain no-repeat;
+          mask:url(assets/logo/faithstream_stacked_white.png) center/contain no-repeat"></div></div>
+          <div class="dont-cap">Force into wide horizontal spaces</div></div>
+        <div class="dont"><div class="dont-art"><div class="row" style="gap:10px;align-items:center">
+          <div style="width:40px;height:46px;background:#fff;-webkit-mask:url(assets/logo/faithstream_stacked_white.png) center/contain no-repeat;mask:url(assets/logo/faithstream_stacked_white.png) center/contain no-repeat"></div>
+          <img src="assets/logo/faithstream_wordmark_white.png" style="height:14px;width:auto" alt=""></div></div>
+          <div class="dont-cap">Mix stacked and horizontal in one composition</div></div>
+        <div class="dont"><div class="dont-art"><div style="width:96%;aspect-ratio:2/1;background:#fff;
+          -webkit-mask:url(assets/logo/faithstream_stacked_white.png) center/100% 100% no-repeat;
+          mask:url(assets/logo/faithstream_stacked_white.png) center/100% 100% no-repeat"></div></div>
+          <div class="dont-cap">Stretch to fill width</div></div>
+        <div class="dont"><div class="dont-art"><div style="width:50%;aspect-ratio:1/1.12;background:linear-gradient(135deg,#38BDF8,#FFD972);
+          -webkit-mask:url(assets/logo/faithstream_stacked_white.png) center/contain no-repeat;
+          mask:url(assets/logo/faithstream_stacked_white.png) center/contain no-repeat"></div></div>
+          <div class="dont-cap">Fill with gradients or off-palette colour</div></div>
+      </div>
+    </div>
+
+    <!-- 1.9 file reference -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Full file reference</h3>
+        <span class="label">1.9 · /assets/logo/</span>
+      </div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Filename</th><th>Contains</th><th>Use for</th></tr></thead>
+        <tbody>
+          <tr><td>faithstream_full_purple.png</td><td>Icon + wordmark, full colour</td><td>Top nav, footer, primary marketing — default on dark and surface</td></tr>
+          <tr><td>faithstream_full_white.png</td><td>Icon + wordmark, white</td><td>Plum / magenta / lavender grounds, dark hero overlays, video end-cards</td></tr>
+          <tr><td>faithstream_full_black.png</td><td>Icon + wordmark, black</td><td>Cream and white grounds, light-mode marketing, print</td></tr>
+          <tr><td>faithstream_icon_purple.png</td><td>Circular badge + flame, full colour</td><td>App icon, nav drawer, compact UI badges at ≥28px</td></tr>
+          <tr><td>faithstream_icon_white.png</td><td>Flame only, white — no badge <span class="em">(flagged)</span></td><td>Dark and photo grounds; pending badge fix</td></tr>
+          <tr><td>faithstream_icon_black.png</td><td>Flame only, black — no badge <span class="em">(flagged)</span></td><td>Light grounds; pending badge fix</td></tr>
+          <tr><td>faithstream_wordmark_purple.png</td><td>Text only, full colour</td><td>Partnership lockups, tight horizontal spaces, light mode</td></tr>
+          <tr><td>faithstream_wordmark_white.png</td><td>Text only, white</td><td>The same, on dark grounds</td></tr>
+          <tr><td>faithstream_stacked_white.png</td><td>Centred vertical lockup, white</td><td>Posters, story covers, splash screens, square tiles, merch. Master for all stacked fills</td></tr>
+          <tr><td>faithstream_favicon.png</td><td>Square icon, pre-sized</td><td>Browser tab, PWA icon, social preview fallback</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════ 02 — COLOUR ───── -->
+<section class="sec" id="colour">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num"><i style="background:var(--cat-drama)"></i><span class="label">Section 02</span></div>
+        <h2 class="h1">Colour System</h2>
+      </div>
+      <p class="body">Purple remains the brand. What changes in v2: one warm accent carries
+        emphasis, and the five content categories finally get five distinguishable hues instead
+        of five purples.</p>
+    </div>
+
+    <!-- the spectrum -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">The range</h3>
+        <span class="label">2.1 · darkest ground to lightest surface</span>
+      </div>
+      <div class="ramp">
+        <div style="background:#07070B"><span style="color:#fff">#07070B</span></div>
+        <div style="background:#0A0A0F"><span style="color:#fff">#0A0A0F</span></div>
+        <div style="background:#16161F"><span style="color:#fff">#16161F</span></div>
+        <div style="background:#491440"><span style="color:#fff">#491440</span></div>
+        <div style="background:#702263"><span style="color:#fff">#702263</span></div>
+        <div style="background:#9B2F87"><span style="color:#fff">#9B2F87</span></div>
+        <div style="background:#6C59A6"><span style="color:#fff">#6C59A6</span></div>
+        <div style="background:#9C8FC4"><span style="color:#15101C">#9C8FC4</span></div>
+        <div style="background:#DCD6EC"><span style="color:#15101C">#DCD6EC</span></div>
+        <div style="background:#F0EEF8"><span style="color:#15101C">#F0EEF8</span></div>
+      </div>
+    </div>
+
+    <!-- core tokens -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Core tokens — shipped, unchanged</h3>
+        <span class="label">2.2</span>
+      </div>
+      <p class="body" style="max-width:78ch;margin-bottom:24px">Not new colours invented for this
+        document — the exact tokens already running in the product.</p>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Token</th><th style="width:60px">Swatch</th><th>Hex</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td>--bg</td><td><div class="sw" style="background:#0A0A0F"></div></td><td class="mono">#0A0A0F</td><td>App background, page base</td></tr>
+          <tr><td>--surface</td><td><div class="sw" style="background:#111118"></div></td><td class="mono">#111118</td><td>Nav drawer, panels</td></tr>
+          <tr><td>--surface-2</td><td><div class="sw" style="background:#16161F"></div></td><td class="mono">#16161F</td><td>Card backgrounds</td></tr>
+          <tr><td>--plum</td><td><div class="sw" style="background:#491440"></div></td><td class="mono">#491440</td><td>Logo icon ground, Give button, primary brand colour</td></tr>
+          <tr><td>--magenta</td><td><div class="sw" style="background:#9B2F87"></div></td><td class="mono">#9B2F87</td><td>Active states, play buttons, progress bars, rating badges</td></tr>
+          <tr><td>--magenta-2</td><td><div class="sw" style="background:#702263"></div></td><td class="mono">#702263</td><td>Avatar gradient start</td></tr>
+          <tr><td>--lavender</td><td><div class="sw" style="background:#6C59A6"></div></td><td class="mono">#6C59A6</td><td>Avatar gradient end</td></tr>
+          <tr><td>--cream</td><td><div class="sw" style="background:#F0EEF8"></div></td><td class="mono">#F0EEF8</td><td>Primary text on dark</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <!-- ember -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Ember — the accent</h3>
+        <span class="label label-em">2.3 · new in v2</span>
+      </div>
+      <div class="g g3" style="--g:14px">
+        <div class="field on-dark" style="background:linear-gradient(150deg,#0A0A0F 0%,#491440 42%,#FF7846 100%)">
+          <span class="ftok">Brand gradient</span>
+          <span class="fname">Plum → Ember</span>
+          <span class="fspec">#0A0A0F → #491440 → #FF7846<br>Hero washes, section breaks, key art overlays</span>
+        </div>
+        <div class="field on-dark" style="background:#FF7846">
+          <span class="ftok">--ember</span>
+          <span class="fname" style="color:#1A0A04">Ember</span>
+          <span class="fspec" style="color:#1A0A04">Hex #FF7846<br>Rgb 255 120 70<br>Cmyk 0 53 73 0</span>
+        </div>
+        <div class="field on-dark" style="background:#FFD972">
+          <span class="ftok" style="color:#2A1F04">--signal</span>
+          <span class="fname" style="color:#2A1F04">Signal</span>
+          <span class="fspec" style="color:#2A1F04">Hex #FFD972<br>Rgb 255 217 114<br>Cmyk 0 15 55 0</span>
+        </div>
+      </div>
+      <div class="call" style="margin-top:26px">
+        <div class="label label-em">Where ember is allowed</div>
+        <p class="body">Emphasis only — never chrome. Primary CTAs, the active nav state, a
+          single highlighted figure in a data row, section markers, "new" badges. It must never
+          become a background wash, a card fill, or a second brand colour competing with plum.
+          Rule of thumb: <strong>if more than one ember element is visible in a viewport, one of
+          them is wrong.</strong> Signal is rarer still — highlight and warning only.</p>
+      </div>
+    </div>
+
+    <!-- categories: the fix -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Category colour — rebuilt</h3>
+        <span class="label label-em">2.4 · fixes a functional failure</span>
+      </div>
+      <div class="call warn" style="margin-bottom:26px">
+        <div class="label">What was wrong</div>
+        <p class="body">The five genre colours were <span class="mono">#491440</span>,
+          <span class="mono">#6C59A6</span>, <span class="mono">#702263</span>,
+          <span class="mono">#9C8FC4</span> and <span class="mono">#3D2870</span> — five purples.
+          A system whose whole job is to make categories distinguishable at a glance could not do
+          it. Below: five hues that can, anchored by brand magenta so the set still reads as
+          FaithStream.</p>
+      </div>
+      <div class="g gf5" style="--g:12px">
+        <div class="field on-dark" style="background:#9B2F87;min-height:clamp(140px,15vw,200px)">
+          <span class="fname">Faith</span><span class="fspec">#9B2F87</span></div>
+        <div class="field" style="background:#FF7846;min-height:clamp(140px,15vw,200px);color:#1A0A04">
+          <span class="fname">Drama</span><span class="fspec">#FF7846</span></div>
+        <div class="field" style="background:#38BDF8;min-height:clamp(140px,15vw,200px);color:#04212E">
+          <span class="fname">Documentary</span><span class="fspec">#38BDF8</span></div>
+        <div class="field" style="background:#FFD972;min-height:clamp(140px,15vw,200px);color:#2A1F04">
+          <span class="fname">Family</span><span class="fspec">#FFD972</span></div>
+        <div class="field on-dark" style="background:#A78BFA;min-height:clamp(140px,15vw,200px);color:#190A33">
+          <span class="fname">Worship</span><span class="fspec">#A78BFA</span></div>
+      </div>
+      <p class="label" style="margin:26px 0 12px">As tags, in context</p>
+      <div class="chips">
+        <span class="chip"><i style="background:var(--cat-faith)"></i>Faith</span>
+        <span class="chip"><i style="background:var(--cat-drama)"></i>Drama</span>
+        <span class="chip"><i style="background:var(--cat-doc)"></i>Documentary</span>
+        <span class="chip"><i style="background:var(--cat-family)"></i>Family</span>
+        <span class="chip"><i style="background:var(--cat-worship)"></i>Worship</span>
+      </div>
+      <p class="body note">Category colour appears only as a tag, a dot, or a 2px rule — never as
+        a card background or a large field in the product itself. It identifies; it does not
+        decorate.</p>
+    </div>
+
+    <!-- usage rule, rewritten -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Usage rule</h3>
+        <span class="label">2.5 · revised in v2</span>
+      </div>
+      <div class="g g2" style="--g:18px">
+        <div class="call purple">
+          <div class="label">The rule</div>
+          <p class="body"><strong>Purple is the brand; everything structural is purple.</strong>
+            Grounds, surfaces, nav, primary brand moments. Ember is permitted for emphasis under
+            2.3. The five category hues are permitted as identification under 2.4. Nothing else
+            enters the palette without review.</p>
+        </div>
+        <div class="call warn">
+          <div class="label">Supersedes the v1 rule</div>
+          <p class="body">v1 stated: "Purple carries every accent role in this system. No gold,
+            no teal, no hue outside this family." That was recorded as a confirmed direction.
+            <strong>v2 reverses it deliberately</strong> — the all-purple range was starving both
+            emphasis and category identification. Flagging it plainly rather than quietly
+            rewriting history: this needs a sign-off, not an assumption.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- functional -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Functional colour</h3>
+        <span class="label">2.6 · resolved by 2.3</span>
+      </div>
+      <p class="body" style="max-width:80ch;margin-bottom:22px">v1 left an open question: the live
+        code uses <span class="mono">#4ADE80</span> green for the "Match %" indicator — a Netflix
+        convention that arrived without a brand decision. With a warm accent now in the system this
+        resolves without a special case.</p>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Role</th><th style="width:60px">Swatch</th><th>Hex</th><th>Resolution</th></tr></thead>
+        <tbody>
+          <tr><td>Match %</td><td><div class="sw" style="background:#4ADE80"></div></td><td class="mono">#4ADE80</td><td>Keep. A near-universal streaming convention users read instantly — the one deliberate exception, now documented rather than inherited</td></tr>
+          <tr><td>Warning</td><td><div class="sw" style="background:#FFD972"></div></td><td class="mono">#FFD972</td><td>Signal. Replaces the borrowed amber</td></tr>
+          <tr><td>Error</td><td><div class="sw" style="background:#E5484D"></div></td><td class="mono">#E5484D</td><td>Unchanged. Sits close enough to ember to feel related, far enough to read as alarm</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ 03 — TYPE ───── -->
+<section class="sec" id="type">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num"><i style="background:var(--cat-doc)"></i><span class="label">Section 03</span></div>
+        <h2 class="h1">Typography<br>System</h2>
+      </div>
+      <p class="body">One family, two cuts. <strong>Geist Sans</strong> carries everything from
+        display to body; <strong>Geist Mono</strong> carries the annotation layer — labels, specs,
+        tokens, filenames. The texture difference between them does the work two families used to.</p>
+    </div>
+
+    <!-- specimen -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Geist Sans</h3>
+        <span class="label">3.1 · four weights</span>
+      </div>
+      <div class="specimen">
+        <div class="spec-cell"><span class="label">Regular · 400</span>
+          <span class="glyph" style="font-weight:400">Aa</span></div>
+        <div class="spec-cell"><span class="label">Medium · 500</span>
+          <span class="glyph" style="font-weight:500">Aa</span></div>
+        <div class="spec-cell"><span class="label label-em">Semibold · 600</span>
+          <span class="glyph" style="font-weight:600">Aa</span></div>
+        <div class="spec-cell"><span class="label">Bold · 700</span>
+          <span class="glyph" style="font-weight:700">Aa</span></div>
+      </div>
+      <div class="g g2" style="--g:22px;margin-top:26px">
+        <p class="body">A neo-grotesque with a generous x-height and quietly geometric
+          construction — the legibility of a UI face with enough character to carry a display
+          line. Semibold is the display weight; 700 is reserved for the rare moment that needs
+          to shout.</p>
+        <p class="body">Set tight. Display sizes take <span class="mono">-0.042em</span> tracking,
+          headings <span class="mono">-0.028em</span>, body <span class="mono">0</span>. Tight
+          tracking at large sizes is what separates a considered setting from a default one.</p>
+      </div>
+    </div>
+
+    <!-- mono -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Geist Mono — the annotation layer</h3>
+        <span class="label">3.2</span>
+      </div>
+      <div class="tile" style="padding:clamp(26px,3vw,44px)">
+        <div class="stack" style="gap:16px">
+          <span class="label">Section 04 · Component States</span>
+          <span class="spec-lg">--magenta · #9B2F87 · rgb(155,47,135)</span>
+          <span class="spec">faithstream_full_purple.png · 200px · clear space 0.5x</span>
+        </div>
+      </div>
+      <p class="body note">Every label, token name, hex value, filename and measurement on this
+        site is set in Geist Mono at 11–13px with wide tracking. It reads as instrumentation
+        rather than copy, which is exactly the distinction a brand system needs to make.</p>
+    </div>
+
+    <!-- hierarchy -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">Hierarchy — five levels</h3>
+        <span class="label">3.3</span>
+      </div>
+      <div class="hier">
+        <div class="hier-row">
+          <div class="stack" style="gap:5px"><span class="label label-em">Display</span>
+            <span class="spec">600 · clamp(44–124px) · −.042em</span></div>
+          <div style="font-size:clamp(40px,6vw,86px);font-weight:600;letter-spacing:-.042em;line-height:.95">Believe Deeper</div>
+        </div>
+        <div class="hier-row">
+          <div class="stack" style="gap:5px"><span class="label">Heading 1</span>
+            <span class="spec">600 · clamp(34–66px) · −.034em</span></div>
+          <div style="font-size:clamp(30px,3.8vw,52px);font-weight:600;letter-spacing:-.034em;line-height:1.02">The Path to Grace</div>
+        </div>
+        <div class="hier-row">
+          <div class="stack" style="gap:5px"><span class="label">Heading 2</span>
+            <span class="spec">600 · clamp(26–40px) · −.028em</span></div>
+          <div class="h2">Featured Faith Documentaries</div>
+        </div>
+        <div class="hier-row">
+          <div class="stack" style="gap:5px"><span class="label">Body</span>
+            <span class="spec">400 · 16px · 1.68</span></div>
+          <div class="body" style="max-width:62ch">A deeply personal story of faith, loss and
+            redemption set against the landscapes of Lagos. Winner of the African Christian Film
+            Award 2024.</div>
+        </div>
+        <div class="hier-row" style="border-bottom:0">
+          <div class="stack" style="gap:5px"><span class="label">Caption / Meta</span>
+            <span class="spec">Mono 500 · 11px · .14em</span></div>
+          <div class="label" style="color:var(--ink-55)">2024 · Drama · 1h 48m · 98% Match</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- in context -->
+    <div class="block">
+      <div class="block-head">
+        <h3 class="h3">In context</h3>
+        <span class="label">3.4</span>
+      </div>
+      <div class="mock">
+        <div style="background:linear-gradient(140deg,#0A0A0F,#491440 60%,#702263);padding:clamp(34px,5vw,72px)">
+          <div class="label label-em" style="margin-bottom:18px">FaithStream Original Film</div>
+          <div style="font-size:clamp(34px,5.4vw,76px);font-weight:600;letter-spacing:-.04em;line-height:.98;max-width:15ch">
+            Faith-Filled Stories for Africa and the World</div>
+          <p class="body" style="max-width:56ch;margin-top:22px;color:var(--ink-80)">Discover
+            faith-inspired stories, documentaries and live worship curated for believers across
+            the continent and the diaspora.</p>
+          <div class="chips" style="margin-top:26px">
+            <span class="chip" style="background:var(--ember);color:#1A0A04;border-color:transparent;font-weight:500">Watch free</span>
+            <span class="chip"><i style="background:var(--cat-drama)"></i>Drama</span>
+            <span class="chip">2024 · 1h 48m</span>
+          </div>
+        </div>
+      </div>
+      <div class="call warn" style="margin-top:26px">
+        <div class="label">Migration note</div>
+        <p class="body">The live product currently ships <strong>Syne</strong> for display and
+          <strong>Inter</strong> for everything else, and one hero slide uses
+          <strong>Cinzel</strong>. This page documents Geist as the system typeface going forward.
+          That is a real change to a shipped brand decision, not just a change to this site — it
+          needs a migration plan and a sign-off before the product follows. Cinzel should retire
+          either way; it appears exactly once and nowhere in any rule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="row" style="gap:14px;align-items:center">
+      <img src="assets/logo/faithstream_full_white.png" style="height:20px;width:auto" alt="">
+      <span class="label">Brand System · v2</span>
+    </div>
+    <span class="label">02 — Visual Identity</span>
+    <span class="label">House of Faith · London &amp; Lagos</span>
+  </div>
+</footer>
+
+</body>
+</html>
