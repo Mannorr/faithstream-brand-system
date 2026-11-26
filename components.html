@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Components — FaithStream Brand System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="assets/tokens.css">
+<style>
+  /* ── Buttons (lifted directly from product code) ── */
+  .btn-play {
+    display: flex; align-items: center; gap: 8px; white-space: nowrap;
+    background: #fff; color: #111; font-weight: 700; font-size: 13px;
+    padding: 10px 20px; border-radius: 8px; transition: opacity 0.2s;
+  }
+  .btn-play:hover { opacity: 0.88; }
+  .btn-play svg { width: 14px; height: 14px; fill: #111; }
+  .btn-more {
+    display: flex; align-items: center; gap: 8px; white-space: nowrap;
+    background: rgba(255,255,255,0.1); backdrop-filter: blur(6px);
+    color: #fff; font-weight: 600; font-size: 13px;
+    padding: 10px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.16);
+  }
+  .btn-give {
+    display: flex; align-items: center; gap: 8px; white-space: nowrap;
+    background: var(--plum); color: #fff; font-weight: 700; font-size: 13px;
+    padding: 10px 18px; border-radius: 8px; box-shadow: 0 4px 20px rgba(155,47,135,0.4);
+  }
+  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+  /* ── EXTENDED BUTTON SYSTEM ── */
+  .btn-base {
+    display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+    font-weight: 700; border-radius: 8px; transition: opacity 0.2s, background 0.2s, border-color 0.2s, transform 0.15s;
+    cursor: pointer; border: none; font-family: 'Inter', sans-serif;
+  }
+  .btn-base:active { transform: scale(0.97); }
+  .btn-base svg, .btn-base i[data-lucide] { flex-shrink: 0; }
+
+  /* Sizes */
+  .btn-sm { font-size: 12px; padding: 7px 14px; border-radius: 6px; }
+  .btn-sm svg, .btn-sm i[data-lucide] { width: 12px; height: 12px; }
+  .btn-md { font-size: 13px; padding: 10px 20px; border-radius: 8px; }
+  .btn-md svg, .btn-md i[data-lucide] { width: 14px; height: 14px; }
+  .btn-lg { font-size: 15px; padding: 13px 26px; border-radius: 9px; }
+  .btn-lg svg, .btn-lg i[data-lucide] { width: 16px; height: 16px; }
+
+  /* Variants */
+  .v-primary { background: #fff; color: #111; }
+  .v-primary:hover { opacity: 0.88; }
+  .v-secondary { background: rgba(255,255,255,0.1); backdrop-filter: blur(6px); color: #fff; border: 1px solid rgba(255,255,255,0.16); }
+  .v-secondary:hover { background: rgba(255,255,255,0.18); }
+  .v-brand { background: var(--plum); color: #fff; box-shadow: 0 4px 20px rgba(155,47,135,0.4); }
+  .v-brand:hover { opacity: 0.9; }
+  .v-accent { background: var(--magenta); color: #fff; }
+  .v-accent:hover { background: #B23FA0; }
+  .v-ghost { background: transparent; color: var(--dim); }
+  .v-ghost:hover { color: #fff; background: rgba(255,255,255,0.06); }
+  .v-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.28); }
+  .v-outline:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+  .v-outline-brand { background: transparent; color: var(--magenta); border: 1.5px solid var(--magenta); }
+  .v-outline-brand:hover { background: rgba(155,47,135,0.1); }
+  .v-destructive { background: #E5484D; color: #fff; }
+  .v-destructive:hover { background: #C9383D; }
+  .v-link { background: transparent; color: var(--lavender-light); padding: 0; text-decoration: underline; text-decoration-color: transparent; }
+  .v-link:hover { text-decoration-color: var(--lavender-light); }
+  .v-disabled { background: var(--surface2); color: var(--dim2); cursor: not-allowed; opacity: 0.6; }
+
+  /* Icon-only circular buttons */
+  .btn-icon-only {
+    display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0;
+    border: none; cursor: pointer; transition: background 0.18s, border-color 0.18s, transform 0.15s;
+  }
+  .btn-icon-only:active { transform: scale(0.94); }
+  .io-sm { width: 30px; height: 30px; }
+  .io-sm svg, .io-sm i[data-lucide] { width: 13px; height: 13px; }
+  .io-md { width: 38px; height: 38px; }
+  .io-md svg, .io-md i[data-lucide] { width: 16px; height: 16px; }
+  .io-lg { width: 48px; height: 48px; }
+  .io-lg svg, .io-lg i[data-lucide] { width: 19px; height: 19px; }
+  .io-filled { background: rgba(255,255,255,0.92); color: #111; }
+  .io-filled:hover { background: #fff; }
+  .io-outline { background: rgba(0,0,0,0.25); border: 2px solid rgba(255,255,255,0.28); color: #fff; }
+  .io-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+  .io-ghost { background: rgba(255,255,255,0.06); color: var(--dim); }
+  .io-ghost:hover { color: #fff; background: rgba(255,255,255,0.12); }
+  .io-brand { background: var(--magenta); color: #fff; }
+  .io-brand:hover { background: #B23FA0; }
+
+  /* Pill / tag buttons (filter chips) */
+  .btn-pill {
+    display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 999px;
+    font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.18s, color 0.18s, border-color 0.18s;
+    border: 1px solid rgba(255,255,255,0.14); background: transparent; color: var(--dim);
+  }
+  .btn-pill:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+  .btn-pill.active { background: var(--magenta); color: #fff; border-color: var(--magenta); }
+
+  /* Full-width button (mobile CTAs, forms) */
+  .btn-full { width: 100%; justify-content: center; }
+
+  /* Loading state */
+  .btn-loading { position: relative; color: transparent !important; pointer-events: none; }
+  .btn-loading::after {
+    content: ''; position: absolute; width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid rgba(0,0,0,0.2); border-top-color: #111; animation: btnSpin 0.7s linear infinite;
+  }
+  .v-secondary.btn-loading::after, .v-outline.btn-loading::after, .v-ghost.btn-loading::after { border: 2px solid rgba(255,255,255,0.25); border-top-color: #fff; }
+  @keyframes btnSpin { to { transform: rotate(360deg); } }
+
+  .btn-section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim2); margin: var(--sp-6) 0 var(--sp-3); }
+  .btn-section-label:first-child { margin-top: 0; }
+
+  /* ── Badges ── */
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .hero-badge {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 4px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.75);
+  }
+  .hero-badge.rating { background: rgba(155,47,135,0.25); border-color: rgba(155,47,135,0.4); color: var(--magenta); }
+
+  /* ── Cards: landscape ── */
+  .card-land {
+    flex-shrink: 0; width: 220px; border-radius: 12px; overflow: hidden; position: relative;
+    background: var(--surface2); cursor: pointer; transition: transform 0.28s cubic-bezier(.4,0,.2,1), box-shadow 0.28s;
+  }
+  .card-land:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 20px 48px rgba(0,0,0,0.55); z-index: 5; }
+  .card-land-thumb { width: 100%; aspect-ratio: 16/9; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--magenta2), var(--plum)); }
+  .card-hover-overlay { position: absolute; inset:0; background: linear-gradient(to top, rgba(10,10,15,0.85) 0%, transparent 55%); opacity:0; transition: opacity 0.28s; }
+  .card-land:hover .card-hover-overlay { opacity: 1; }
+  .card-play-btn {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 44px; height: 44px; border-radius: 50%; background: rgba(155,47,135,0.88); border: 2px solid rgba(255,255,255,0.28);
+    display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.28s;
+  }
+  .card-land:hover .card-play-btn { opacity: 1; }
+  .card-play-btn svg { width:15px; height:15px; fill:white; margin-left:2px; }
+  .card-land-info { padding: 10px 13px 13px; }
+  .card-land-title { font-size: 13px; font-weight: 600; color: var(--cream); margin-bottom: 4px; }
+  .card-land-meta { font-size: 11px; color: var(--dim2); display: flex; gap: 6px; align-items: center; }
+  .meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--dim2); }
+
+  /* ── Cards: portrait (Top 10) ── */
+  .card-port { flex-shrink: 0; width: 130px; border-radius: 12px; overflow: hidden; position: relative; background: var(--surface2); cursor: pointer;
+    transition: transform 0.28s cubic-bezier(.4,0,.2,1), box-shadow 0.28s; }
+  .card-port:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 20px 48px rgba(0,0,0,0.55); z-index: 5; }
+  .card-port-thumb { width: 100%; aspect-ratio: 1080/1600; position: relative; overflow: hidden;
+    background: linear-gradient(160deg, var(--lavender), var(--plum)); }
+  .card-port-overlay { position: absolute; inset:0; background: linear-gradient(to top, rgba(10,10,15,0.9) 0%, transparent 55%); }
+  .card-port-num { position: absolute; bottom: 6px; left: 10px; font-family: var(--font-display); font-weight: 800;
+    font-size: 42px; line-height: 1; color: rgba(255,255,255,0.06); -webkit-text-stroke: 1.5px rgba(255,255,255,0.2); }
+  .card-port-info { padding: 8px 10px 10px; }
+  .card-port-title { font-size: 12px; font-weight: 600; color: var(--cream); }
+  .card-port-meta { font-size: 10px; color: var(--dim2); margin-top: 3px; }
+
+  /* ── Continue watching ── */
+  .card-cont { flex-shrink: 0; width: 240px; border-radius: 12px; overflow: hidden; background: var(--surface2); cursor: pointer;
+    transition: transform 0.28s cubic-bezier(.4,0,.2,1), box-shadow 0.28s; position: relative; }
+  .card-cont:hover { transform: scale(1.03) translateY(-4px); box-shadow: 0 18px 44px rgba(0,0,0,0.5); z-index: 5; }
+  .card-cont-thumb { width: 100%; aspect-ratio: 16/9; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--plum-tint), var(--plum-black)); }
+  .card-cont-overlay { position: absolute; inset:0; background: linear-gradient(to top, rgba(10,10,15,0.92) 0%, transparent 55%); }
+  .card-cont-resume { position: absolute; bottom: 12px; left: 12px; display:flex; align-items:center; gap:8px; font-size: 12px; font-weight: 700; color:#fff; }
+  .resume-btn { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.92); display:flex; align-items:center; justify-content:center; }
+  .resume-btn svg { width:11px; height:11px; fill:#0A0A0F; margin-left:1px; }
+  .card-cont-info { padding: 10px 13px 13px; }
+  .card-cont-prog-bar { width:100%; height:3px; background: rgba(255,255,255,0.1); border-radius:2px; margin-bottom:8px; }
+  .card-cont-prog-fill { height:100%; border-radius:2px; background: var(--magenta); }
+  .card-cont-row { display:flex; justify-content:space-between; align-items:center; }
+  .card-cont-title { font-size:12px; font-weight:600; color:var(--cream); }
+  .card-cont-time { font-size:11px; color:var(--dim2); }
+
+  .card-row-demo { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; }
+
+  /* ── Nav components ── */
+  .navdemo-topnav {
+    display: flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 18px;
+    background: rgba(10,10,15,0.65); border: 1px solid var(--border); border-radius: var(--radius-md);
+  }
+  .navdemo-logo { display: flex; align-items: center; gap: 9px; font-family: var(--font-display); font-weight: 800; font-size: 14px; color: var(--cream); }
+  .navdemo-links { display: flex; gap: 18px; font-size: 12px; color: var(--dim); }
+  .navdemo-links span.active { color: #fff; }
+  .navdemo-icons { display: flex; gap: 8px; align-items: center; }
+  .navdemo-icon { width: 30px; height: 30px; border-radius: 7px; display:flex; align-items:center; justify-content:center; color: var(--dim); font-size: 13px; background: rgba(255,255,255,0.04); }
+  .navdemo-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--magenta2), var(--lavender)); display:flex; align-items:center; justify-content:center; font-size: 11px; font-weight: 700; color:#fff; }
+
+  /* ── Modal demo (static, non-interactive preview) ── */
+  .modal-static {
+    background: #1C1C28; border-radius: 18px; overflow: hidden; max-width: 560px;
+  }
+  .modal-static-hero { height: 180px; background: linear-gradient(135deg, var(--magenta2), var(--plum-black)); position: relative; }
+  .modal-static-close { position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; border-radius: 50%;
+    background: rgba(10,10,15,0.75); display:flex; align-items:center; justify-content:center; color:#fff; font-size: 13px; }
+  .modal-static-body { padding: 4px 24px 24px; }
+  .modal-static-title { font-family: var(--font-display); font-weight: 900; font-size: 24px; color: #fff; margin-bottom: 10px; }
+  .modal-static-meta { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; font-size: 12px; }
+  .modal-static-match { color: #4ade80; font-weight: 700; }
+  .modal-static-rating { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 5px; border: 1.5px solid rgba(155,47,135,0.5); color: var(--magenta); background: rgba(155,47,135,0.12); }
+  .modal-static-actions { display: flex; gap: 8px; margin-bottom: 16px; }
+  .modal-static-play { display:flex; align-items:center; gap:6px; background:#fff; color:#111; font-weight:700; font-size:12px; padding:8px 16px; border-radius:7px; }
+  .modal-static-action { display:flex; align-items:center; gap:6px; background: rgba(255,255,255,0.1); color:#fff; font-weight:600; font-size:12px; padding:8px 14px; border-radius:7px; border: 1px solid rgba(255,255,255,0.16); }
+  .modal-static-desc { font-size: 12.5px; line-height: 1.65; color: rgba(240,238,248,0.72); }
+
+  /* preview popup static */
+  .preview-static { width: 260px; border-radius: 14px; background: #1C1C28; box-shadow: 0 20px 50px rgba(0,0,0,0.6); overflow: hidden; }
+  .preview-static-thumb { height: 140px; background: linear-gradient(135deg, var(--lavender), var(--plum)); }
+  .preview-static-body { padding: 12px 14px 16px; }
+  .preview-static-title { font-family: var(--font-display); font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+  .preview-static-actions { display: flex; gap: 6px; margin-bottom: 8px; }
+  .preview-static-play { display:flex; align-items:center; gap:5px; background:#fff; color:#111; font-weight:700; font-size:11px; padding:6px 12px; border-radius:6px; }
+  .preview-static-icon { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.28); display:flex; align-items:center; justify-content:center; color:#fff; font-size: 11px; }
+
+  .component-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-6); align-items: start; }
+  @media (max-width: 760px) { .component-pair { grid-template-columns: 1fr; } }
+
+  /* ── Form Controls ── */
+  .fs-input-wrap { display: flex; flex-direction: column; gap: 5px; }
+  .fs-label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim2); }
+  .fs-input {
+    background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 8px; padding: 10px 14px; font-size: 13px; font-family: 'Inter',sans-serif;
+    color: var(--cream); outline: none; transition: border-color 0.18s, background 0.18s; width: 100%;
+  }
+  .fs-input::placeholder { color: var(--dim2); }
+  .fs-input:focus { border-color: var(--magenta); background: rgba(155,47,135,0.07); }
+  .fs-input.error { border-color: #E5484D; background: rgba(229,72,77,0.07); }
+  .fs-input.success { border-color: #4ade80; }
+  .fs-input:disabled { opacity: 0.4; cursor: not-allowed; }
+  .fs-input-hint { font-size: 11.5px; color: var(--dim2); }
+  .fs-input-hint.err { color: #E5484D; }
+  .fs-search-wrap { position: relative; }
+  .fs-search-wrap i[data-lucide] { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; color: var(--dim2); pointer-events: none; }
+  .fs-search-wrap .fs-input { padding-left: 36px; }
+  .fs-select {
+    appearance: none; -webkit-appearance: none; background: rgba(255,255,255,0.06) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238A82A0' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center;
+    border: 1.5px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 10px 36px 10px 14px;
+    font-size: 13px; font-family: 'Inter',sans-serif; color: var(--cream); cursor: pointer; width: 100%; outline: none;
+  }
+  .fs-select:focus { border-color: var(--magenta); }
+  .fs-textarea { resize: vertical; min-height: 90px; }
+  .fs-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
+  @media (max-width: 600px) { .fs-form-grid { grid-template-columns: 1fr; } }
+
+  /* ── Toggle / Switch ── */
+  .toggle-row { display: flex; align-items: center; gap: 12px; }
+  .toggle-label-text { font-size: 13px; color: var(--dim); }
+  .fs-toggle { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
+  .fs-toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
+  .fs-toggle-track {
+    position: absolute; inset: 0; border-radius: 999px;
+    background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.14);
+    transition: background 0.22s, border-color 0.22s; cursor: pointer;
+  }
+  .fs-toggle-thumb {
+    position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--dim2); transition: transform 0.22s, background 0.22s;
+  }
+  .fs-toggle input:checked ~ .fs-toggle-track { background: var(--magenta); border-color: var(--magenta); }
+  .fs-toggle input:checked ~ .fs-toggle-track .fs-toggle-thumb { transform: translateX(18px); background: #fff; }
+  .fs-checkbox-row { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  .fs-checkbox { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.2); border-radius: 4px; flex-shrink: 0; position: relative; transition: background 0.18s, border-color 0.18s; }
+  .fs-checkbox.checked { background: var(--magenta); border-color: var(--magenta); }
+  .fs-checkbox.checked::after { content:'✓'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size: 10px; font-weight: 800; color:#fff; }
+  .fs-radio { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; flex-shrink: 0; position: relative; transition: border-color 0.18s; }
+  .fs-radio.checked { border-color: var(--magenta); }
+  .fs-radio.checked::after { content:''; position:absolute; inset:3px; border-radius:50%; background:var(--magenta); }
+
+  /* ── Tabs ── */
+  .fs-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: var(--sp-5); }
+  .fs-tab { padding: 10px 20px; font-size: 13px; font-weight: 600; color: var(--dim); cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.18s, border-color 0.18s; white-space: nowrap; }
+  .fs-tab:hover { color: var(--cream); }
+  .fs-tab.active { color: var(--cream); border-bottom-color: var(--magenta); }
+  .fs-breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--dim2); flex-wrap: wrap; }
+  .fs-breadcrumb a { color: var(--lavender-light); text-decoration: none; }
+  .fs-breadcrumb a:hover { text-decoration: underline; }
+  .fs-breadcrumb-sep { color: var(--dim2); }
+
+  /* ── Toasts ── */
+  .toast-stack { display: flex; flex-direction: column; gap: var(--sp-3); }
+  .toast {
+    display: flex; align-items: center; gap: 12px; padding: 13px 16px; border-radius: 10px;
+    background: #1C1C28; border: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5); max-width: 360px;
+  }
+  .toast-icon { width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .toast-icon i[data-lucide] { width: 16px; height: 16px; }
+  .toast.success .toast-icon { background: rgba(74,222,128,0.15); color: #4ade80; }
+  .toast.info    .toast-icon { background: rgba(108,89,166,0.2); color: var(--lavender-light); }
+  .toast.warn    .toast-icon { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .toast.error   .toast-icon { background: rgba(229,72,77,0.15); color: #E5484D; }
+  .toast-body { flex: 1; }
+  .toast-title { font-size: 13px; font-weight: 700; color: var(--cream); }
+  .toast-msg { font-size: 12px; color: var(--dim); margin-top: 2px; }
+  .toast-close { color: var(--dim2); cursor: pointer; }
+  .toast-close i[data-lucide] { width: 14px; height: 14px; }
+
+  /* ── Skeleton ── */
+  .skeleton { background: linear-gradient(90deg, var(--surface2) 25%, rgba(255,255,255,0.06) 50%, var(--surface2) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 6px; }
+  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+  .skel-card { background: var(--surface2); border-radius: 12px; overflow: hidden; width: 200px; flex-shrink: 0; }
+  .skel-thumb { width: 100%; aspect-ratio: 16/9; }
+  .skel-body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; }
+  .skel-line { height: 10px; }
+  .skel-line.short { width: 60%; }
+
+  /* ── Progress bar ── */
+  .fs-progress-wrap { display: flex; flex-direction: column; gap: 6px; }
+  .fs-progress-head { display: flex; justify-content: space-between; font-size: 12px; }
+  .fs-progress-label { color: var(--dim); font-weight: 600; }
+  .fs-progress-val { color: var(--magenta); font-weight: 700; }
+  .fs-progress-track { height: 6px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
+  .fs-progress-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--magenta2), var(--magenta)); transition: width 0.5s; }
+
+  /* ── Avatars ── */
+  .avatar { border-radius: 50%; background: linear-gradient(135deg, var(--magenta2), var(--lavender)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-family: 'Inter',sans-serif; flex-shrink: 0; position: relative; }
+  .avatar.xs { width: 22px; height: 22px; font-size: 9px; }
+  .avatar.sm { width: 30px; height: 30px; font-size: 11px; }
+  .avatar.md { width: 40px; height: 40px; font-size: 14px; }
+  .avatar.lg { width: 56px; height: 56px; font-size: 18px; }
+  .avatar.xl { width: 72px; height: 72px; font-size: 24px; }
+  .avatar-status { position: absolute; bottom: 1px; right: 1px; width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--surface); }
+  .avatar-status.online { background: #4ade80; }
+  .avatar-status.offline { background: var(--dim2); }
+  .avatar-stack { display: flex; }
+  .avatar-stack .avatar { border: 2px solid var(--surface); margin-left: -8px; }
+  .avatar-stack .avatar:first-child { margin-left: 0; }
+  .avatar-count { width: 30px; height: 30px; border-radius: 50%; background: var(--surface2); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--dim); margin-left: -8px; }
+
+  /* ── Donation CTA card ── */
+  .donation-card {
+    border-radius: 16px; overflow: hidden;
+    background: linear-gradient(135deg, #1A0A1F, #3D1235, #491440);
+    border: 1px solid rgba(155,47,135,0.3); padding: var(--sp-8);
+    box-shadow: 0 24px 60px rgba(155,47,135,0.2);
+  }
+  .donation-title { font-family: var(--font-display); font-weight: 800; font-size: 24px; color: #fff; margin-bottom: 8px; }
+  .donation-sub { font-size: 14px; color: rgba(240,238,248,0.65); margin-bottom: var(--sp-6); line-height: 1.6; }
+  .donation-amounts { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: var(--sp-5); }
+  .donation-amount {
+    padding: 9px 20px; border-radius: 8px; font-size: 14px; font-weight: 700;
+    background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.14); color: #fff; cursor: pointer;
+    transition: background 0.18s, border-color 0.18s;
+  }
+  .donation-amount.active { background: var(--magenta); border-color: var(--magenta); }
+  .donation-amount:hover:not(.active) { background: rgba(255,255,255,0.14); }
+  .donation-input-row { display: flex; gap: 10px; align-items: center; }
+  .donation-currency { font-size: 16px; font-weight: 700; color: var(--dim); }
+
+  /* ── Genre browse tiles ── */
+  .genre-browse-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--sp-3); }
+  .genre-browse-tile {
+    border-radius: 10px; padding: var(--sp-4) var(--sp-3); display: flex; align-items: center; gap: 10px;
+    background: var(--surface); border: 1px solid var(--border); cursor: pointer; transition: border-color 0.18s, transform 0.18s;
+  }
+  .genre-browse-tile:hover { border-color: rgba(155,47,135,0.35); transform: translateY(-2px); }
+  .genre-icon-box { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .genre-icon-box i[data-lucide] { width: 17px; height: 17px; color: #fff; stroke-width: 2; }
+  .genre-tile-info { min-width: 0; }
+  .genre-tile-name { font-size: 13px; font-weight: 700; color: var(--cream); }
+  .genre-tile-count { font-size: 11px; color: var(--dim2); margin-top: 2px; }
+
+  /* ── Rating / Match ── */
+  .star-row { display: flex; gap: 3px; align-items: center; }
+  .star { width: 14px; height: 14px; }
+  .star.filled { color: #fbbf24; }
+  .star.half { color: #fbbf24; opacity: 0.5; }
+  .star.empty { color: var(--dim2); }
+  .match-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 700; color: #4ade80; }
+  .match-bar-wrap { display: flex; align-items: center; gap: 10px; }
+  .match-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
+  .match-bar-fill { height: 100%; background: #4ade80; border-radius: 999px; }
+
+  /* ── Empty state ── */
+  .empty-state {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: var(--sp-12) var(--sp-8); text-align: center; gap: var(--sp-4);
+    background: var(--surface); border: 1px dashed rgba(255,255,255,0.1); border-radius: var(--radius-lg);
+  }
+  .empty-icon { width: 56px; height: 56px; border-radius: 16px; background: rgba(155,47,135,0.12); display: flex; align-items: center; justify-content: center; }
+  .empty-icon i[data-lucide] { width: 26px; height: 26px; color: var(--magenta); }
+  .empty-title { font-family: var(--font-display); font-size: 18px; font-weight: 800; color: var(--cream); }
+  .empty-body { font-size: 13.5px; color: var(--dim); line-height: 1.65; max-width: 300px; }
+
+  /* ── Mobile phone frame ── */
+  .phone-frame {
+    width: 220px; border-radius: 36px; background: #0D0D14;
+    border: 6px solid #2A2A35; box-shadow: 0 30px 80px rgba(0,0,0,0.6); overflow: hidden;
+    margin: 0 auto;
+  }
+  .phone-screen { position: relative; }
+  .phone-notch { width: 80px; height: 22px; background: #0D0D14; border-radius: 0 0 14px 14px; margin: 0 auto; position: relative; z-index: 2; }
+  .phone-content { padding: 0 0 0; min-height: 360px; background: var(--bg); position: relative; }
+  .phone-tabbar { display: flex; align-items: center; justify-content: space-around; height: 54px; background: rgba(15,15,22,0.97); border-top: 1px solid var(--border); }
+  .phone-tab { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .phone-tab i[data-lucide] { width: 20px; height: 20px; color: var(--dim); }
+  .phone-tab.active i[data-lucide] { color: var(--magenta); }
+  .phone-tab-label { font-size: 9px; font-weight: 600; color: var(--dim); letter-spacing: 0.03em; }
+  .phone-tab.active .phone-tab-label { color: var(--magenta); }
+  .phone-hero-mini { height: 130px; background: linear-gradient(135deg, var(--plum), var(--lavender)); display: flex; align-items: flex-end; padding: 10px 12px; }
+  .phone-hero-title { font-family: var(--font-display); font-size: 13px; font-weight: 800; color: #fff; }
+  .phone-row-mini { display: flex; gap: 6px; padding: 10px 8px 6px; overflow: hidden; }
+  .phone-card-mini { flex-shrink: 0; width: 74px; border-radius: 6px; background: var(--surface2); }
+  .phone-card-thumb { width: 100%; aspect-ratio: 16/9; border-radius: 6px 6px 0 0; background: linear-gradient(135deg, var(--magenta2), var(--plum)); }
+  .phone-card-title { font-size: 7px; font-weight: 600; color: var(--dim); padding: 4px 5px 5px; }
+
+  @media (max-width: 900px) {
+    .genre-browse-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .genre-browse-grid { grid-template-columns: repeat(2, 1fr); gap: var(--sp-3); }
+    .btn-row { gap: 8px; }
+    .btn-section-label { margin-top: var(--sp-5); }
+
+    .component-pair { gap: var(--sp-4); }
+    .modal-static-body { padding: 4px 16px 18px; }
+    .modal-static-title { font-size: 19px; }
+    .modal-static-actions { flex-wrap: wrap; }
+
+    .preview-static { width: 100%; max-width: 280px; }
+
+    .navdemo-topnav { padding: 0 10px; flex-wrap: wrap; gap: 6px; height: auto; min-height: 44px; }
+    .navdemo-links { display: none; }
+
+    .card-row-demo { gap: 10px; }
+
+    .phone-card-mini { width: 64px; }
+  }
+</style>
+</head>
+<body data-page="components">
+
+<div class="bs-shell">
+  <script src="assets/sidebar.js"></script>
+
+  <main class="bs-main">
+    <div class="bs-page">
+
+      <div class="bs-kicker">04 — Product</div>
+      <h1 class="bs-h1">Components</h1>
+      <p class="bs-lede">Every component below is lifted directly from the live FaithStream product code — not redesigned, just documented and annotated against the token system, so new screens reuse these patterns instead of building slightly-different versions each time.</p>
+
+      <span class="bs-tag kept">All components below are live product code, unchanged</span>
+
+      <!-- BUTTONS -->
+      <h2 class="bs-h2" style="margin-top:0;padding-top:0;border-top:none;">Buttons</h2>
+      <span class="bs-tag new">Extended — three core styles already shipped, expanded into a full system</span>
+      <p class="bs-p">The live product ships three button styles (primary white, secondary glass, brand plum). This expands that into a complete system — eight variants, three sizes, icon-only circular buttons, pill filters, and the states every button needs (loading, disabled, full-width) — so new screens stop inventing one-off button treatments.</p>
+
+      <div class="btn-section-label">Variants — medium size</div>
+      <div class="bs-demo dark-product">
+        <div class="btn-row">
+          <button class="btn-base btn-md v-primary"><svg viewBox="0 0 24 24" width="14" height="14" fill="#111"><path d="M8 5v14l11-7z"/></svg>Primary</button>
+          <button class="btn-base btn-md v-secondary"><i data-lucide="info"></i>Secondary</button>
+          <button class="btn-base btn-md v-brand"><i data-lucide="heart"></i>Brand</button>
+          <button class="btn-base btn-md v-accent"><i data-lucide="plus"></i>Accent</button>
+          <button class="btn-base btn-md v-ghost"><i data-lucide="x"></i>Ghost</button>
+          <button class="btn-base btn-md v-outline">Outline</button>
+          <button class="btn-base btn-md v-outline-brand">Outline Brand</button>
+          <button class="btn-base btn-md v-destructive"><i data-lucide="trash-2"></i>Destructive</button>
+          <button class="btn-base btn-md v-link">Link button</button>
+          <button class="btn-base btn-md v-disabled" disabled>Disabled</button>
+        </div>
+      </div>
+
+      <div class="bs-table-wrap"><table class="bs-table">
+        <tr><th>Variant</th><th>Token</th><th>Use for</th></tr>
+        <tr><td><strong>Primary (white)</strong></td><td><code>background: #fff</code></td><td>The one action per screen that matters most — Watch / Play. Never more than one per view.</td></tr>
+        <tr><td><strong>Secondary (glass)</strong></td><td><code>rgba(255,255,255,0.1)</code> + blur</td><td>Supporting actions — More Info, secondary navigation.</td></tr>
+        <tr><td><strong>Brand (plum)</strong></td><td><code>background: var(--plum)</code></td><td>Mission-specific actions — Give, Donate. Reserved for House of Faith's support/donation calls to action.</td></tr>
+        <tr><td><strong>Accent (magenta)</strong></td><td><code>background: var(--magenta)</code></td><td>In-app confirmations — Subscribe, Confirm, Add to List when it needs to stand out more than secondary but isn't the page's primary action.</td></tr>
+        <tr><td><strong>Ghost</strong></td><td><code>transparent</code>, dim text</td><td>Low-emphasis actions sitting next to a stronger one — Cancel, Skip, Not now.</td></tr>
+        <tr><td><strong>Outline</strong></td><td><code>1.5px solid rgba(255,255,255,.28)</code></td><td>Secondary actions on photo/video backgrounds where glass blur isn't available or wanted.</td></tr>
+        <tr><td><strong>Outline Brand</strong></td><td><code>1.5px solid var(--magenta)</code></td><td>Secondary action that still needs to read as on-brand rather than neutral.</td></tr>
+        <tr><td><strong>Destructive</strong></td><td><code>background: #E5484D</code></td><td>Irreversible actions only — Remove from list, Delete account, Cancel subscription.</td></tr>
+        <tr><td><strong>Link</strong></td><td>No fill, underline on hover</td><td>Inline text actions — "See all," "Learn more," footer links.</td></tr>
+      </table></div>
+
+      <div class="btn-section-label">Sizes</div>
+      <div class="bs-demo dark-product">
+        <div class="btn-row">
+          <button class="btn-base btn-sm v-primary"><svg viewBox="0 0 24 24" width="12" height="12" fill="#111"><path d="M8 5v14l11-7z"/></svg>Small</button>
+          <button class="btn-base btn-md v-primary"><svg viewBox="0 0 24 24" width="14" height="14" fill="#111"><path d="M8 5v14l11-7z"/></svg>Medium</button>
+          <button class="btn-base btn-lg v-primary"><svg viewBox="0 0 24 24" width="16" height="16" fill="#111"><path d="M8 5v14l11-7z"/></svg>Large</button>
+        </div>
+      </div>
+      <div class="bs-table-wrap"><table class="bs-table">
+        <tr><th>Size</th><th>Padding</th><th>Font</th><th>Use for</th></tr>
+        <tr><td><strong>Small</strong></td><td><code>7px 14px</code></td><td>12px</td><td>Inline within cards, table row actions, dense UI</td></tr>
+        <tr><td><strong>Medium</strong></td><td><code>10px 20px</code></td><td>13px</td><td>Default everywhere — nav, modals, most CTAs</td></tr>
+        <tr><td><strong>Large</strong></td><td><code>13px 26px</code></td><td>15px</td><td>Hero CTAs, empty states, the single most important action on a page</td></tr>
+      </table></div>
+
+      <div class="btn-section-label">Icon-only / circular</div>
+      <div class="bs-demo dark-product">
+        <div class="btn-row">
+          <button class="btn-icon-only io-sm io-filled"><svg viewBox="0 0 24 24" width="11" height="11" fill="#111"><path d="M8 5v14l11-7z"/></svg></button>
+          <button class="btn-icon-only io-md io-filled"><svg viewBox="0 0 24 24" width="14" height="14" fill="#111"><path d="M8 5v14l11-7z"/></svg></button>
+          <button class="btn-icon-only io-lg io-filled"><svg viewBox="0 0 24 24" width="17" height="17" fill="#111"><path d="M8 5v14l11-7z"/></svg></button>
+          <button class="btn-icon-only io-md io-outline"><i data-lucide="plus"></i></button>
+          <button class="btn-icon-only io-md io-outline"><i data-lucide="thumbs-up"></i></button>
+          <button class="btn-icon-only io-md io-ghost"><i data-lucide="share-2"></i></button>
+          <button class="btn-icon-only io-md io-brand"><i data-lucide="heart"></i></button>
+        </div>
+      </div>
+      <p class="bs-p" style="font-size:13px;">Filled circular buttons are reserved for the play action specifically (resume cards, hover previews, modals) — outline and ghost variants cover everything else (add to list, like, share) so the play button always reads as the one filled, unmistakable action in any card.</p>
+
+      <div class="btn-section-label">Pill filters / tags</div>
+      <div class="bs-demo dark-product">
+        <div class="btn-row">
+          <button class="btn-pill active">All</button>
+          <button class="btn-pill">Faith</button>
+          <button class="btn-pill">Drama</button>
+          <button class="btn-pill">Documentary</button>
+          <button class="btn-pill">Family</button>
+          <button class="btn-pill">Worship</button>
+        </div>
+      </div>
+      <p class="bs-p" style="font-size:13px;">For genre filters, language toggles, or any horizontal multi-select row — active state uses the magenta accent, matching the genre color system on the Motifs &amp; Imagery page.</p>
+
+      <div class="btn-section-label">States</div>
+      <div class="bs-demo dark-product">
+        <div class="btn-row">
+          <button class="btn-base btn-md v-primary"><svg viewBox="0 0 24 24" width="14" height="14" fill="#111"><path d="M8 5v14l11-7z"/></svg>Default</button>
+          <button class="btn-base btn-md v-primary" style="opacity:0.88;">Hover</button>
+          <button class="btn-base btn-md v-primary" style="transform:scale(0.97);">Active / pressed</button>
+          <button class="btn-base btn-md v-primary btn-loading">Loading</button>
+          <button class="btn-base btn-md v-disabled" disabled>Disabled</button>
+        </div>
+      </div>
+
+      <div class="btn-section-label">Full-width (mobile / forms)</div>
+      <div class="bs-demo dark-product col">
+        <button class="btn-base btn-lg v-brand btn-full"><i data-lucide="heart"></i>Make A Donation</button>
+      </div>
+      <p class="bs-p" style="font-size:13px;">Reserved for mobile CTA bars and form submissions — never used in desktop content rows, where a full-width button would compete with the card grid for visual weight.</p>
+
+      <!-- BADGES -->
+      <h2 class="bs-h2">Badges</h2>
+      <p class="bs-p">Content metadata — rating, genre, duration — shown as small pills. The rating badge is the only one that uses the magenta accent; everything else stays neutral so it doesn't compete for attention.</p>
+      <div class="bs-demo dark-product">
+        <div class="badge-row">
+          <span class="hero-badge rating">TV-14</span>
+          <span class="hero-badge">Faith</span>
+          <span class="hero-badge">Drama</span>
+          <span class="hero-badge">2h 14m</span>
+        </div>
+      </div>
+
+      <!-- CARDS -->
+      <h2 class="bs-h2">Cards</h2>
+      <p class="bs-p">Three card types, used for three distinct content rails. All three share the same hover language: scale 1.03–1.05, lift 4–5px, shadow growth — consistent enough to feel like one system.</p>
+
+      <h3 class="bs-h3">Landscape card — "New on FaithStream"</h3>
+      <div class="bs-demo dark-product">
+        <div class="card-row-demo">
+          <div class="card-land"><div class="card-land-thumb"><div class="card-hover-overlay"></div><div class="card-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="card-land-info"><div class="card-land-title">Abejoye</div><div class="card-land-meta">Faith<span class="meta-dot"></span>2024<span class="meta-dot"></span>1h 45m</div></div></div>
+          <div class="card-land"><div class="card-land-thumb"><div class="card-hover-overlay"></div><div class="card-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="card-land-info"><div class="card-land-title">Sims</div><div class="card-land-meta">Drama<span class="meta-dot"></span>2024<span class="meta-dot"></span>1h 52m</div></div></div>
+          <div class="card-land"><div class="card-land-thumb"><div class="card-hover-overlay"></div><div class="card-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="card-land-info"><div class="card-land-title">Million Dollar Baby</div><div class="card-land-meta">Drama<span class="meta-dot"></span>2024<span class="meta-dot"></span>2h 12m</div></div></div>
+        </div>
+      </div>
+
+      <h3 class="bs-h3">Portrait card — "Top 10"</h3>
+      <div class="bs-demo dark-product">
+        <div class="card-row-demo">
+          <div class="card-port"><div class="card-port-thumb"><div class="card-port-overlay"></div><div class="card-port-num">1</div></div><div class="card-port-info"><div class="card-port-title">Title Here</div><div class="card-port-meta">Faith · Drama</div></div></div>
+          <div class="card-port"><div class="card-port-thumb"><div class="card-port-overlay"></div><div class="card-port-num">2</div></div><div class="card-port-info"><div class="card-port-title">Title Here</div><div class="card-port-meta">Family · 2024</div></div></div>
+          <div class="card-port"><div class="card-port-thumb"><div class="card-port-overlay"></div><div class="card-port-num">3</div></div><div class="card-port-info"><div class="card-port-title">Title Here</div><div class="card-port-meta">Worship</div></div></div>
+          <div class="card-port"><div class="card-port-thumb"><div class="card-port-overlay"></div><div class="card-port-num">4</div></div><div class="card-port-info"><div class="card-port-title">Title Here</div><div class="card-port-meta">Drama · 2023</div></div></div>
+        </div>
+      </div>
+      <p class="bs-p" style="font-size:13px;">The outlined numeral (<code>-webkit-text-stroke</code>, near-transparent fill) is a distinctive, already-shipped detail worth protecting — it reads as premium and is unique enough to be a recognizable FaithStream signature, similar to how Netflix's Top 10 numerals work.</p>
+
+      <h3 class="bs-h3">Continue Watching card</h3>
+      <div class="bs-demo dark-product">
+        <div class="card-row-demo">
+          <div class="card-cont"><div class="card-cont-thumb"><div class="card-cont-overlay"></div><div class="card-cont-resume"><div class="resume-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>Resume</div></div><div class="card-cont-info"><div class="card-cont-prog-bar"><div class="card-cont-prog-fill" style="width:62%"></div></div><div class="card-cont-row"><span class="card-cont-title">Title Placeholder</span><span class="card-cont-time">34 min left</span></div></div></div>
+          <div class="card-cont"><div class="card-cont-thumb"><div class="card-cont-overlay"></div><div class="card-cont-resume"><div class="resume-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>Resume</div></div><div class="card-cont-info"><div class="card-cont-prog-bar"><div class="card-cont-prog-fill" style="width:28%"></div></div><div class="card-cont-row"><span class="card-cont-title">Title Placeholder</span><span class="card-cont-time">1h 22m left</span></div></div></div>
+        </div>
+      </div>
+      <p class="bs-p" style="font-size:13px;">Progress fill uses <code>--magenta</code> exclusively — the one place in the system where the accent color directly represents user data (how much they've watched), which is why it should never be reused for decoration elsewhere.</p>
+
+      <!-- NAV -->
+      <h2 class="bs-h2">Navigation</h2>
+      <p class="bs-p">Top nav (persistent) and nav drawer (hamburger-triggered overlay) — both already share the same logo treatment and icon language.</p>
+      <div class="bs-demo dark-product col">
+        <div class="bs-demo-label">Top nav</div>
+        <div class="navdemo-topnav" style="width:100%;">
+          <div class="navdemo-logo"><img src="assets/logo/faithstream_icon_purple.png" alt="" style="width:26px;height:26px;border-radius:50%;">FAITHSTREAM</div>
+          <div class="navdemo-links"><span class="active">Home</span><span>Movie</span><span>Series</span><span>Worship</span><span>Devotionals</span></div>
+          <div class="navdemo-icons"><div class="navdemo-icon">⌕</div><div class="navdemo-icon">🔔</div><div class="navdemo-avatar">U</div></div>
+        </div>
+      </div>
+
+      <!-- MODAL + PREVIEW -->
+      <h2 class="bs-h2">Modal &amp; Hover Preview</h2>
+      <p class="bs-p">The two states a content card can expand into: a quick hover preview (desktop only, 380ms delay to avoid accidental triggers) and the full info modal (click, any device).</p>
+      <div class="component-pair">
+        <div>
+          <div class="bs-demo-label" style="margin-bottom:8px;">Hover preview popup</div>
+          <div class="preview-static">
+            <div class="preview-static-thumb"></div>
+            <div class="preview-static-body">
+              <div class="preview-static-title">Abejoye</div>
+              <div class="preview-static-actions">
+                <div class="preview-static-play"><svg viewBox="0 0 24 24" width="10" height="10" fill="#111"><path d="M8 5v14l11-7z"/></svg>Play</div>
+                <div class="preview-static-icon">+</div>
+                <div class="preview-static-icon">👍</div>
+              </div>
+              <div style="font-size:11px; color:#4ade80; font-weight:700; margin-bottom:6px;">97% Match</div>
+              <div style="font-size:11px; color:var(--dim); line-height:1.6;">A powerful story of faith, redemption, and family set in a vibrant Nigerian community.</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="bs-demo-label" style="margin-bottom:8px;">Full info modal</div>
+          <div class="modal-static">
+            <div class="modal-static-hero"><div class="modal-static-close">✕</div></div>
+            <div class="modal-static-body">
+              <div class="modal-static-title">Abejoye</div>
+              <div class="modal-static-meta">
+                <span class="modal-static-match">97% Match</span>
+                <span class="modal-static-rating">PG</span>
+                <span style="color:var(--dim);">2024</span>
+                <span style="color:var(--dim);">1h 45m</span>
+              </div>
+              <div class="modal-static-actions">
+                <div class="modal-static-play">▶ Play</div>
+                <div class="modal-static-action">+ My List</div>
+                <div class="modal-static-action">👍 Like</div>
+              </div>
+              <div class="modal-static-desc">A powerful story of faith, redemption, and family set in a vibrant Nigerian community. Abejoye follows a young man's journey from waywardness to purpose.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bs-callout warn">
+        <div class="bs-callout-label">Same flagged inconsistency as Identity page</div>
+        <div class="bs-callout-text">Both components use <code>#4ade80</code> green for "Match %" — see the Color System section on the Logo, Color &amp; Type page for the open decision on whether this stays as a deliberate exception or gets retired to a purple-family equivalent.</div>
+      </div>
+
+      <div class="bs-pagenav">
+        <a href="patterns.html" class="bs-pagenav-link">
+          <span class="bs-pagenav-dir">← Back</span>
+          <span class="bs-pagenav-title">03 — Motifs &amp; Imagery</span>
+        </a>
+        <a href="web-ui.html" class="bs-pagenav-link next">
+          <span class="bs-pagenav-dir">Next →</span>
+          <span class="bs-pagenav-title">05 — Web &amp; UI System</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>
